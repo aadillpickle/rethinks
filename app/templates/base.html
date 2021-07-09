@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <title>Reframe</title>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-8E2E9MFD5P"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-8E2E9MFD5P');
+        </script>
+        <!-- CSS only -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        <style>
+
+        </style>
+    </head>
+    <body>
+        <br>
+        <h1 style = "text-align: center;">✨😊✨</h1>
+        <hr></hr>
+
+        <h1 style = "text-align: center">Enter a grievance and see <br> how you could think about it differently </h1>
+
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <p style = "text-align: center;">
+                Negative Thought:<br>
+                {{ form.thought(size=64) }}<br>
+                {% for error in form.thought.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p style="text-align: center;">{{ form.submit() }}</p>
+        </form>
+
+        <div style = "position: fixed; bottom: 0; width: 100%; text-align: center;">
+	     <p><a href = 'https://discord.com/oauth2/authorize?client_id=847220707024175145&permissions=2048&scope=bot'>Add the bot to your discord server!</a> Type !reframe [your negative thought] to use it :D
+            <p> If you enjoyed this project, help me keep it alive by <a href = "https://www.buymeacoffee.com/aadillpickle">buying me a coffee!</a> <br> P.S. Proceeds will go to server and API costs - not actually coffee 😅</p>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul class = "d-flex justify-content-center">
+            {% for message in messages %}
+            <li style = "max-width: 450px;">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+    </body>
+</html>
