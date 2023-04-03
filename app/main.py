@@ -22,7 +22,7 @@ def index():
 
      openai.api_key = os.environ.get("API_KEY")
      response = openai.Completion.create(
-     engine="text-davinci-002",
+     engine="text-davinci-003",
      prompt=prompt,
      temperature=0.89,
      max_tokens=60,
