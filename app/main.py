@@ -27,7 +27,7 @@ def index():
         max_tokens=256,
     )
 
-     messages = str(response["choices"][0]["text"]).split("Positive:")
+     messages = str(response.choices[0].message.content).split("Positive:")
      if len(messages) >= 2:
           flash("Here's another way to think about that: " + messages[1])
      else:
