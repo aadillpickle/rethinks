@@ -8,6 +8,7 @@ load_dotenv()
 app = Flask(__name__)
 SECRET_KEY = os.urandom(32)
 app.config['SECRET_KEY'] = SECRET_KEY
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
@@ -19,8 +20,7 @@ def index():
      + "\nPositive: I'm having some trouble right now, but I'm making plans to solve those problems."
      + "\n\nNegative: why do i suck at this\nPositive: I have learned a lot about this topic. I want to keep learning more about it so I'll keep up the effort.\nPositive: I know what I need to improve."
      + "\n\nNegative: " + form.thought.data)
-
-     openai.api_key = os.environ.get("API_KEY")
+      
      response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[{"role": "system", "content":prompt}],
