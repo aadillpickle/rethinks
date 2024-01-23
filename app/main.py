@@ -21,16 +21,11 @@ def index():
      + "\n\nNegative: " + form.thought.data)
 
      openai.api_key = os.environ.get("API_KEY")
-     response = openai.Completion.create(
-     engine="text-davinci-003",
-     prompt=prompt,
-     temperature=0.89,
-     max_tokens=60,
-     top_p=1.0,
-     frequency_penalty=0.0,
-     presence_penalty=0.0,
-     stop=["\n\n"]
-     )
+     response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo",
+        messages=[{"role": "system", "content":prompt}],
+        max_tokens=256,
+    )
 
      messages = str(response["choices"][0]["text"]).split("Positive:")
      if len(messages) >= 2:
